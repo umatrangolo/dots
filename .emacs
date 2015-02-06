@@ -17,3 +17,20 @@
 (setq inhibit-splash-screen t
       initial-scratch-message nil)
 
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (set-face-attribute 'default nil
+                      :family "Menlo"
+                      :height 110
+                      :weight 'normal
+                      :width 'normal)
+
+  (when (functionp 'set-fontset-font)
+    (set-fontset-font "fontset-default"
+                      'unicode
+                      (font-spec :family "Menlo"
+                                 :width 'normal
+                                 :size 11
+                                 :weight 'normal))))
+
+
