@@ -40,3 +40,8 @@
 ;; highlight parens
 (show-paren-mode t)
 
+;; enable flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-scala-executable "/Applications/scala-2.11.4/bin/scalac")
+
+;;
