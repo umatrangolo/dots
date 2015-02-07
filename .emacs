@@ -33,4 +33,7 @@
                                  :size 11
                                  :weight 'normal))))
 
+(setq tab-width 2
+      indent-tabs-mode nil)
+
 
