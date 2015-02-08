@@ -48,4 +48,7 @@
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "yellow")
 
+;; enable global linum mode
+(global-linum-mode 1)
+
 ;;
