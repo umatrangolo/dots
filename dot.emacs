@@ -44,4 +44,8 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-scala-executable "/Applications/scala-2.11.4/bin/scalac")
 
+;; enable hl
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "yellow")
+
 ;;
