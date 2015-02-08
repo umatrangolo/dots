@@ -18,6 +18,9 @@
       initial-scratch-message nil)
 
 (when window-system
+  (global-linum-mode 1)	;; enable global linum mode
+  (global-hl-line-mode 1) ;; hilight current line
+  (set-face-background 'hl-line "yellow") 
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (set-face-attribute 'default nil
                       :family "Menlo"
@@ -43,12 +46,5 @@
 ;; enable flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-scala-executable "/Applications/scala-2.11.4/bin/scalac")
-
-;; enable hl
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "yellow")
-
-;; enable global linum mode
-(global-linum-mode 1)
 
 ;;
