@@ -22,17 +22,17 @@
   (set-face-background 'hl-line "yellow") 
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (set-face-attribute 'default nil
-                      :family "Menlo"
-                      :height 110
+                      :family "Source Code Pro"
+                      :height 120
                       :weight 'normal
                       :width 'normal)
 
   (when (functionp 'set-fontset-font)
     (set-fontset-font "fontset-default"
                       'unicode
-                      (font-spec :family "Menlo"
+                      (font-spec :family "Source Code Pro"
                                  :width 'normal
-                                 :size 11
+                                 :size 12
                                  :weight 'normal))))
 
 ;; no tabs, only 2 spaces for indentation
