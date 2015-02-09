@@ -35,6 +35,10 @@
                                  :size 12
                                  :weight 'normal))))
 
+
+;; best fit for a Mac Book Pro Retina screen
+(when window-system (set-frame-size (selected-frame) 170 76))
+
 ;; no tabs, only 2 spaces for indentation
 (setq tab-width 2 indent-tabs-mode nil)
 ;; no backup files please
