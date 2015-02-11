@@ -41,8 +41,10 @@
 
 ;; no tabs, only 2 spaces for indentation
 (setq tab-width 2 indent-tabs-mode nil)
+
 ;; no backup files please
 (setq make-backup-files nil)
+
 ;; highlight parens
 (show-paren-mode t)
 
