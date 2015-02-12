@@ -19,7 +19,7 @@
 (when window-system
   (global-linum-mode 1)	;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
-  (set-face-background 'hl-line "yellow") 
+  (set-face-background 'hl-line "yellow")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (set-face-attribute 'default nil
                       :family "Source Code Pro"
@@ -55,6 +55,7 @@
 ;; remove trialing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; use always spaces
+(setq-default indent-tabs-mode nil)
+
 ;;
-
-
