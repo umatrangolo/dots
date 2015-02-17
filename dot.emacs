@@ -23,7 +23,7 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (set-face-attribute 'default nil
                       :family "Source Code Pro"
-                      :height 120
+                      :height 110
                       :weight 'normal
                       :width 'normal)
 
@@ -32,12 +32,12 @@
                       'unicode
                       (font-spec :family "Source Code Pro"
                                  :width 'normal
-                                 :size 12
+                                 :size 11
                                  :weight 'normal))))
 
 
 ;; best fit for a Mac Book Pro Retina screen
-(when window-system (set-frame-size (selected-frame) 170 76))
+(when window-system (set-frame-size (selected-frame) 170 82))
 
 ;; no tabs, only 2 spaces for indentation
 (setq tab-width 2 indent-tabs-mode nil)
