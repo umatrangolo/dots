@@ -20,8 +20,11 @@
   (global-linum-mode 1)	;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
   (set-face-background 'hl-line "yellow")
+  (set-face-foreground 'font-lock-keyword-face "blue")
+  (set-face-font 'font-lock-keyword-face "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
+;;  (set-face-font 'scala-font-lock:override-face "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
+;;  (set-face-font 'scala-font-lock:private-face "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (set-face-font 'font-lock-keyword-face "-*-Source Code Pro-bold-normal-normal-*-*-*-*-*-m-0-iso10646-1")
   (set-face-attribute 'default nil
                       :family "Source Code Pro"
                       :height 110
