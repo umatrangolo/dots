@@ -21,7 +21,7 @@
 
 ;; customize scala-mode2
 (when window-system
-  (add-hook 'scala-mode-hook (lambda () ;; customize scala-mode2
+  (add-hook 'scala-mode-hook (lambda ()
                                (set-face-font 'scala-font-lock:override-face source-code-pro-bold-11)
                                (set-face-foreground 'scala-font-lock:override-face "blue")
                                (set-face-font 'scala-font-lock:private-face source-code-pro-bold-11)
@@ -31,10 +31,10 @@
   (global-linum-mode 1)	;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
   (set-face-background 'hl-line "yellow")
-  (set-face-foreground 'font-lock-keyword-face "blue")
-  (set-face-font 'font-lock-keyword-face "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
+  (set-face-foreground 'font-lock-keyword-face "blue") ;; all keywords have to 'blue' coloured
+  (set-face-font 'font-lock-keyword-face source-code-pro-bold-11)   ;; set all keywords to be 'bold'
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (set-face-attribute 'default nil
+  (set-face-attribute 'default nil ;; best match for a MacBook Pro Retina
                       :family "Source Code Pro"
                       :height 110
                       :weight 'normal
@@ -43,7 +43,7 @@
   (when (functionp 'set-fontset-font)
     (set-fontset-font "fontset-default"
                       'unicode
-                      (font-spec :family "Source Code Pro"
+                      (font-spec :family "Source Code Pro" ;; best match for a MacBook Pro Retina
                                  :width 'normal
                                  :size 11
                                  :weight 'normal))))
