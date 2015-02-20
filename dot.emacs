@@ -62,6 +62,12 @@
 ;; use always spaces
 (setq-default indent-tabs-mode nil)
 
+;; require Helm
+(require 'helm-config)
+
+;; Do not truncate lines
+(setq-default truncate-lines 1)
+
 ;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
