@@ -16,14 +16,23 @@
 (setq inhibit-splash-screen t
       initial-scratch-message nil)
 
+;; set Source Code Pro 11 bold as font for Scala keywords
+(setq source-code-pro-bold-11 "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
+
+;; customize scala-mode2
+(when window-system
+  (add-hook 'scala-mode-hook (lambda () ;; customize scala-mode2
+                               (set-face-font 'scala-font-lock:override-face source-code-pro-bold-11)
+                               (set-face-foreground 'scala-font-lock:override-face "blue")
+                               (set-face-font 'scala-font-lock:private-face source-code-pro-bold-11)
+                               (set-face-foreground 'scala-font-lock:private-face "blue"))))
+
 (when window-system
   (global-linum-mode 1)	;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
   (set-face-background 'hl-line "yellow")
   (set-face-foreground 'font-lock-keyword-face "blue")
   (set-face-font 'font-lock-keyword-face "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
-;;  (set-face-font 'scala-font-lock:override-face "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
-;;  (set-face-font 'scala-font-lock:private-face "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (set-face-attribute 'default nil
                       :family "Source Code Pro"
@@ -65,7 +74,7 @@
 ;; require Helm
 (require 'helm-config)
 
-;; Do not truncate lines
+;; do not truncate lines
 (setq-default truncate-lines 1)
 
 ;;
