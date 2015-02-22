@@ -12,6 +12,9 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+;; customize txt mode
+(set-face-foreground 'font-lock-keyword-face "blue") ;; all keywords have to 'blue' coloured
+
 ;; skip the splash screen and go straight to *scratch*
 (setq inhibit-splash-screen t
       initial-scratch-message nil)
