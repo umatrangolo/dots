@@ -28,7 +28,11 @@
                                (set-face-font 'scala-font-lock:override-face source-code-pro-bold-11)
                                (set-face-foreground 'scala-font-lock:override-face "blue")
                                (set-face-font 'scala-font-lock:private-face source-code-pro-bold-11)
-                               (set-face-foreground 'scala-font-lock:private-face "blue"))))
+                               (set-face-foreground 'scala-font-lock:private-face "blue")
+                               (set-face-font 'scala-font-lock:abstract-face source-code-pro-bold-11)
+                               (set-face-foreground 'scala-font-lock:abstract-face "blue")
+                               (set-face-font 'scala-font-lock:protected-face source-code-pro-bold-11)
+                               (set-face-foreground 'scala-font-lock:protected-face "blue"))))
 
 (when window-system
   (global-linum-mode 1)	;; enable global linum mode
