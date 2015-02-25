@@ -32,7 +32,9 @@
                                (set-face-font 'scala-font-lock:abstract-face source-code-pro-bold-11)
                                (set-face-foreground 'scala-font-lock:abstract-face "blue")
                                (set-face-font 'scala-font-lock:protected-face source-code-pro-bold-11)
-                               (set-face-foreground 'scala-font-lock:protected-face "blue"))))
+                               (set-face-foreground 'scala-font-lock:protected-face "blue")
+                               (set-face-font 'scala-font-lock:implicit-face source-code-pro-bold-11)
+                               (set-face-foreground 'scala-font-lock:implicit-face "blue"))))
 
 (when window-system
   (global-linum-mode 1)	;; enable global linum mode
