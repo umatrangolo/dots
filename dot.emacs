@@ -1,29 +1,27 @@
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 (setq user-full-name "Ugo Matrangolo")
 (setq user-mail-address "ugo.matrangolo@gmail.com")
 
 ;; switch off all pointless stuff
-(scroll-bar-mode -1)
 (tool-bar-mode -1)
 
 ;; customize txt mode
 (set-face-foreground 'font-lock-keyword-face "blue") ;; all keywords have to 'blue' coloured
 
 ;; skip the splash screen and go straight to *scratch*
-(setq inhibit-splash-screen t
-      initial-scratch-message nil)
+;; (setq inhibit-splash-screen t
+;;      initial-scratch-message nil)
 
 ;; set Source Code Pro 11 bold as font for Scala keywords
 (setq source-code-pro-bold-11 "-*-Source Code Pro-bold-normal-normal-*-11-*-*-*-m-0-iso10646-1")
 
 ;; customize scala-mode2
 (when window-system
+  (scroll-bar-mode -1)
   (add-hook 'scala-mode-hook (lambda ()
                                (set-face-font 'scala-font-lock:override-face source-code-pro-bold-11)
                                (set-face-foreground 'scala-font-lock:override-face "blue")
