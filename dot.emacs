@@ -73,7 +73,7 @@
 
 ;; enable flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-scala-executable "/Applications/scala-2.11.4/bin/scalac")
+(setq flycheck-scala-executable "/Applications/scala-2.11.7/bin/scalac")
 
 ;; remove trialing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
