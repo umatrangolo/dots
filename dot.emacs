@@ -47,48 +47,21 @@
 ;; set GOPATH
 (setenv "GOPATH" "/Users/umatrangolo/Development/golang")
 
-;; Autocompletion for GO
-(require 'auto-complete-config)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
-
-(defun auto-complete-for-go ()
-(auto-complete-mode 1))
- (add-hook 'go-mode-hook 'auto-complete-for-go)
-
-(with-eval-after-load 'go-mode
-   (require 'go-autocomplete))
-
 ;; Font
 (setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-(setq source-code-pro-normal-11 "-*-Source Code Pro-normal-normal-normal-*-11-*-*-*-m-0-iso10646-1")
 (setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
 
 (set-face-attribute 'default nil :font source-code-pro-normal-12)
 
 ;; Customize scala-mode2
 (when window-system
-  (scroll-bar-mode -1)
-  (add-hook 'scala-mode-hook (lambda ()
-                               ;; (set-face-font 'scala-font-lock:override-face source-code-bold-normal-12)
-                               ;; (set-face-foreground 'scala-font-lock:override-face "blue")
-                               ;; (set-face-font 'scala-font-lock:private-face source-code-bold-normal-12)
-                               ;; (set-face-foreground 'scala-font-lock:private-face "blue")
-                               ;; (set-face-font 'scala-font-lock:abstract-face source-code-bold-normal-12)
-                               ;; (set-face-foreground 'scala-font-lock:abstract-face "blue")
-                               ;; (set-face-font 'scala-font-lock:protected-face source-code-bold-normal-12)
-                               ;; (set-face-foreground 'scala-font-lock:protected-face "blue")
-                               ;; (set-face-font 'scala-font-lock:implicit-face source-code-bold-normal-12)
-                               ;; (set-face-foreground 'scala-font-lock:implicit-face "blue")
-                               ;; (set-face-font 'scala-font-lock:lazy-face source-code-bold-normal-12)
-                               ;; (set-face-foreground 'scala-font-lock:lazy-face "blue")
-                               ;; (set-face-font 'scala-font-lock:font-lock-keyword-face source-code-bold-normal-12)
-                               ;; (set-face-foreground 'scala-font-lock:lazy-face "blue")
-                               )))
+  (scroll-bar-mode -1))
 
 ;; font-lock-keyword-face
 
 ;; do not truncate lines
 (setq-default truncate-lines 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -112,6 +85,7 @@
  '(font-lock-comment-face ((t (:foreground "Firebrick" :slant italic))))
  '(font-lock-keyword-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:implicit-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:lazy-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:override-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:private-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:sealed-face ((t (:foreground "RoyalBlue1" :weight bold)))))
