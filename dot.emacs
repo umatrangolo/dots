@@ -17,7 +17,7 @@
 )
 
 ;; best fit for a Mac Book Pro Retina screen
-(when window-system (set-frame-size (selected-frame) 170 77))
+(when window-system (set-frame-size (selected-frame) 170 78))
 
 ;; no tabs, only 2 spaces for indentation
 (setq tab-width 2 indent-tabs-mode nil)
@@ -30,7 +30,7 @@
 
 ;; enable flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-scala-executable "/Applications/scala-2.11.7/bin/scalac")
+(setq flycheck-scala-executable "/Applications/scala-2.12.2/bin/scalac")
 
 ;; remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -73,10 +73,11 @@
  '(flycheck-go-build-executable "/usr/local/go/bin/go")
  '(package-selected-packages
    (quote
-    (go-autocomplete auto-package-update auto-complete yaml-mode typescript-mode typescript sql-indent solarized-theme scala-mode2 sbt-mode rich-minority powerline php-mode markdown-mode+ magit js3-mode icicles helm-projectile go-projectile flyspell-lazy flycheck doremi angular-mode ag)))
+    (pomodoro go-autocomplete auto-package-update auto-complete yaml-mode typescript-mode typescript sql-indent solarized-theme scala-mode2 sbt-mode rich-minority powerline php-mode markdown-mode+ magit js3-mode icicles helm-projectile go-projectile flyspell-lazy flycheck doremi angular-mode ag)))
  '(projectile-global-mode t)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -84,7 +85,10 @@
  ;; If there is more than one, they won't work right.
  '(font-lock-comment-face ((t (:foreground "Firebrick" :slant italic))))
  '(font-lock-keyword-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:abstract-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:final-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:implicit-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:protected-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:lazy-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:override-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:private-face ((t (:foreground "RoyalBlue1" :weight bold))))
