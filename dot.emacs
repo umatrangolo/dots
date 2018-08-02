@@ -6,14 +6,12 @@
 (setq user-full-name "Ugo Matrangolo")
 (setq user-mail-address "ugo.matrangolo@gmail.com")
 
-;; switch off all pointless stuff
-(tool-bar-mode -1)
-
 (when window-system
   (global-linum-mode 1)	;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
   (set-face-background 'hl-line "yellow")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (tool-bar-mode -1)
 )
 
 ;; best fit for a Mac Book Pro Retina screen
@@ -28,24 +26,11 @@
 ;; highlight parens
 (show-paren-mode t)
 
-;; enable flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-scala-executable "/Applications/scala-2.12.2/bin/scalac")
-
-;; remove trailing whitespaces on saving
+; remove trailing whitespaces on saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; use always spaces
 (setq-default indent-tabs-mode nil)
-
-;; require Helm
-(require 'helm-config)
-
-;; Auto udpate packages
-(auto-package-update-maybe)
-
-;; set GOPATH
-(setenv "GOPATH" "/Users/umatrangolo/Development/golang")
 
 ;; Font
 (setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
@@ -57,27 +42,37 @@
 (when window-system
   (scroll-bar-mode -1))
 
-;; font-lock-keyword-face
-
 ;; do not truncate lines
 (setq-default truncate-lines 1)
+
+;; force UTF-8
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
+;; enable flycheck
+(global-flycheck-mode)
+(package-install 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-scala-executable "/Applications/scala/bin/scalac")
+(setq flycheck-go-build-executable "/usr/local/go/bin/go")
+
+;; Org Mode setup
+(setq org-todo-keywords
+  '((sequence "TODO" "WIP" "|" "CANCELED" "DONE")))
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning) ("WIP" . "yellow")
+        ("CANCELED" . (:foreground "blue" :weight bold))))
+(setq org-log-done 'time)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
- '(flycheck-go-build-executable "/usr/local/go/bin/go")
  '(package-selected-packages
    (quote
-    (pomodoro go-autocomplete auto-package-update auto-complete yaml-mode typescript-mode typescript sql-indent solarized-theme scala-mode2 sbt-mode rich-minority powerline php-mode markdown-mode+ magit js3-mode icicles helm-projectile go-projectile flyspell-lazy flycheck doremi angular-mode ag)))
- '(projectile-global-mode t)
- '(show-paren-mode t)
- '(tool-bar-mode nil))
-
+    (yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -88,8 +83,8 @@
  '(scala-font-lock:abstract-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:final-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:implicit-face ((t (:foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:protected-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:lazy-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:override-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:private-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:protected-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(scala-font-lock:sealed-face ((t (:foreground "RoyalBlue1" :weight bold)))))
