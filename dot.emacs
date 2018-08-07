@@ -2,6 +2,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
+;; (package-refresh-contents)
 
 (setq user-full-name "Ugo Matrangolo")
 (setq user-mail-address "ugo.matrangolo@gmail.com")
@@ -56,6 +57,7 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq flycheck-scala-executable "/Applications/scala/bin/scalac")
 (setq flycheck-go-build-executable "/usr/local/go/bin/go")
+(setenv "GOPATH" "/Users/umatrangolo/Development/golang")
 
 ;; Org Mode setup
 (setq org-todo-keywords
@@ -64,6 +66,9 @@
       '(("TODO" . org-warning) ("WIP" . "yellow")
         ("CANCELED" . (:foreground "blue" :weight bold))))
 (setq org-log-done 'time)
+
+;; Projectile setup
+(setq projectile-project-search-path '("~/Development"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
