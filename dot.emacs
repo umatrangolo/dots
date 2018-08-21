@@ -68,7 +68,10 @@
 (setq org-log-done 'time)
 
 ;; Projectile setup
+(projectile-mode +1)
 (setq projectile-project-search-path '("~/Development"))
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -77,7 +80,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
+    (ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
