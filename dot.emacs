@@ -65,7 +65,6 @@
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning) ("WIP" . "yellow")
         ("CANCELED" . (:foreground "blue" :weight bold))))
-(setq org-log-done 'time)
 
 ;; Projectile setup
 (projectile-mode +1)
@@ -80,7 +79,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
+    (flymake-json json-mode ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
