@@ -1,9 +1,7 @@
-* TODO [A] [33%] HBC K8S setup                                          :hbc:
-** DONE [C] Open a way to connect to the k8s zk ensemble
-   CLOSED: [2018-08-03 Fri 15:20]
-   This way we can inspect the content of the zk ensemble and perform
-   debug on (e.g.) kafka topics, etc.
-** TODO [C] We need to the SSH into all worker nodes
-** WIP [A] Use namespaces so we can isolate different stacks (e.g. needed for MySaks)
-* Crypto
-** TODO [A] Look at Steem.io (possible new addition for crypto portfolio?)
+* TODO [C] Homepage for the 'Search' project :hbc: :search:
+* TODO [D] GitHook to transform a emacs Org-Mode TODO file into a static htlm file deployed on S3
+           - Simple .todo file versioned on GIT
+           - On each commit a GitHook parses and transforms to HTLM
+           - Possible search using Lunr
+           - Deploy on S3 under todo.umatrangolo.me
+           - HTML view is Read Only (+ some js)
