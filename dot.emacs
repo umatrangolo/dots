@@ -1,6 +1,20 @@
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl
+    (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 ;; (package-refresh-contents)
 
@@ -63,7 +77,7 @@
 (setq org-todo-keywords
   '((sequence "TODO" "WIP" "|" "CANCELED" "DONE")))
 (setq org-todo-keyword-faces
-      '(("TODO" . org-warning) ("WIP" . "yellow")
+      '(("TODO" . org-warning) ("WIP" . "black")
         ("CANCELED" . (:foreground "blue" :weight bold))))
 
 ;; Projectile setup
@@ -79,7 +93,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flymake-json json-mode ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
+    (scalariform flymake-json json-mode ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
