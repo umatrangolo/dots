@@ -5,3 +5,5 @@
            - Possible search using Lunr
            - Deploy on S3 under todo.umatrangolo.me
            - HTML view is Read Only (+ some js)
+* TODO [A] Integrate with Product Enriched :hbc: :search: :search-bridge:
+* TODO [A] Augment model with a `wishlist-ability` info :hbc: :search: :search-bridge:
