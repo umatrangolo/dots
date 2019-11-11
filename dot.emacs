@@ -69,7 +69,7 @@ There are two things you can do about this warning:
 (package-install 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-scala-executable "/Applications/scala/bin/scalac")
+(setq flycheck-scala-executable "/usr/local/Cellar/scala/2.13.1/bin/scalac")
 (setq flycheck-go-build-executable "/usr/local/go/bin/go")
 (setenv "GOPATH" "/Users/umatrangolo/Development/golang")
 
@@ -86,14 +86,18 @@ There are two things you can do about this warning:
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
+;; Magit setup
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes nil)
  '(package-selected-packages
    (quote
-    (scalariform flymake-json json-mode ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
+    (typescript-mode terraform-mode markdown-mode go-scratch go-autocomplete scalariform flymake-json json-mode ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
