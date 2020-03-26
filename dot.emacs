@@ -2,21 +2,40 @@
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
-  (when no-ssl
-    (warn "\
+  (when no-ssl (warn "\
 Your version of Emacs does not support SSL connections,
 which is unsafe because it allows man-in-the-middle attacks.
 There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
-  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
   (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+  ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-  (when (< emacs-major-version 24)
-    ;; For important compatibility libraries like cl-lib
-    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+  )
 (package-initialize)
-;; (package-refresh-contents)
+
+;; Install use-package if not already installed
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+
+(exec-path-from-shell-initialize)
+(setenv "GOPATH" "/Users/umatrangolo/Development/golang")
+(setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOPATH") "/bin"))
+
+;; if you want to change prefix for lsp-mode keybindings.
+(setq lsp-keymap-prefix "s-l")
+
+(require 'lsp-mode)
+(add-hook 'prog-mode-hook #'lsp)
+
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (require 'use-package))
 
 (setq user-full-name "Ugo Matrangolo")
 (setq user-mail-address "ugo.matrangolo@gmail.com")
@@ -27,7 +46,7 @@ There are two things you can do about this warning:
   (set-face-background 'hl-line "yellow")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tool-bar-mode -1)
-)
+  )
 
 ;; best fit for a Mac Book Pro Retina screen
 (when window-system (set-frame-size (selected-frame) 170 78))
@@ -47,16 +66,6 @@ There are two things you can do about this warning:
 ;; use always spaces
 (setq-default indent-tabs-mode nil)
 
-;; Font
-(setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-(setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-
-(set-face-attribute 'default nil :font source-code-pro-normal-12)
-
-;; Customize scala-mode2
-(when window-system
-  (scroll-bar-mode -1))
-
 ;; do not truncate lines
 (setq-default truncate-lines 1)
 
@@ -64,52 +73,19 @@ There are two things you can do about this warning:
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
-;; enable flycheck
-(global-flycheck-mode)
-(package-install 'exec-path-from-shell)
-(exec-path-from-shell-initialize)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq flycheck-scala-executable "/usr/local/Cellar/scala/2.13.1/bin/scalac")
-(setq flycheck-go-build-executable "/usr/local/go/bin/go")
-(setenv "GOPATH" "/Users/umatrangolo/Development/golang")
-
-;; Org Mode setup
-(setq org-todo-keywords
-  '((sequence "TODO" "WIP" "|" "CANCELED" "DONE")))
-(setq org-todo-keyword-faces
-      '(("TODO" . org-warning) ("WIP" . "black")
-        ("CANCELED" . (:foreground "blue" :weight bold))))
-
-;; Projectile setup
-(projectile-mode +1)
-(setq projectile-project-search-path '("~/Development"))
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
-;; Magit setup
-(global-set-key (kbd "C-x g") 'magit-status)
-
+(when window-system
+  (scroll-bar-mode -1))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes nil)
  '(package-selected-packages
    (quote
-    (typescript-mode terraform-mode markdown-mode go-scratch go-autocomplete scalariform flymake-json json-mode ag nodejs-repl s markdown-preview-mode yaml-mode go-projectile projectile markdown-mode+ flycheck auto-complete go-mode js3-mode magit sbt-mode scala-mode ##))))
+    (exec-path-from-shell go-mode company-lsp flycheck lsp-ui lsp-mode ##))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-comment-face ((t (:foreground "Firebrick" :slant italic))))
- '(font-lock-keyword-face ((t (:foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:abstract-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:final-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:implicit-face ((t (:foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:lazy-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:override-face ((t (:foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:private-face ((t (:foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:protected-face ((t (:foreground "RoyalBlue1" :weight bold))))
- '(scala-font-lock:sealed-face ((t (:foreground "RoyalBlue1" :weight bold)))))
+ )
