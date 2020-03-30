@@ -15,38 +15,41 @@ There are two things you can do about this warning:
   )
 (package-initialize)
 
+(setq user-full-name "Ugo Matrangolo")
+(setq user-mail-address "ugo.matrangolo@gmail.com")
+
 ;; Install use-package if not already installed
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
 (require 'use-package)
+(use-package exec-path-from-shell
+  :ensure t
+  :init (exec-path-from-shell-initialize))
 
-(exec-path-from-shell-initialize)
-(setenv "GOPATH" "/Users/umatrangolo/Development/golang")
-(setenv "PATH" (concat (getenv "PATH") ":" (getenv "GOPATH") "/bin"))
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
-;; if you want to change prefix for lsp-mode keybindings.
-(setq lsp-keymap-prefix "s-l")
+(use-package go-mode
+  :ensure t)
 
-(require 'lsp-mode)
-(add-hook 'prog-mode-hook #'lsp)
+(use-package projectile
+  :ensure t)
 
-;; This is only needed once, near the top of the file
-(eval-when-compile
-  ;; Following line is not needed if use-package.el is in ~/.emacs.d
-  (require 'use-package))
+;; Font
+(setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+(setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
 
-(setq user-full-name "Ugo Matrangolo")
-(setq user-mail-address "ugo.matrangolo@gmail.com")
+(set-face-attribute 'default nil :font source-code-pro-normal-12)
 
 (when window-system
-  (global-linum-mode 1)	;; enable global linum mode
+  (global-linum-mode 1) ;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
   (set-face-background 'hl-line "yellow")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tool-bar-mode -1)
-  )
+  (tool-bar-mode -1))
 
 ;; best fit for a Mac Book Pro Retina screen
 (when window-system (set-frame-size (selected-frame) 170 78))
@@ -73,16 +76,16 @@ There are two things you can do about this warning:
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
-(when window-system
-  (scroll-bar-mode -1))
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (exec-path-from-shell go-mode company-lsp flycheck lsp-ui lsp-mode ##))))
+ '(package-selected-packages (quote (exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
