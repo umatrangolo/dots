@@ -38,6 +38,22 @@ There are two things you can do about this warning:
 (use-package projectile
   :ensure t)
 
+(use-package scala-mode
+  :ensure t
+  :interpreter ("scala" . scala-mode))
+
+(use-package sbt-mode
+  :ensure t
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map))
+
+(use-package magit :ensure t)
+
 ;; Font
 (setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
 (setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
@@ -85,7 +101,10 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (exec-path-from-shell))))
+ '(package-selected-packages (quote (exec-path-from-shell)))
+ '(scroll-bar-mode nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
