@@ -53,6 +53,12 @@ There are two things you can do about this warning:
    minibuffer-local-completion-map))
 
 (use-package magit :ensure t)
+(use-package markdown-mode :ensure t)
+(use-package scalariform :ensure t)
+(use-package json-mode :ensure t)
+(use-package ag :ensure t)
+(use-package yaml-mode :ensure t)
+(use-package js3-mode :ensure t)
 
 ;; Font
 (setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
@@ -110,4 +116,13 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-comment-face ((t (:foreground "Firebrick" :slant italic))))
+ '(font-lock-keyword-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:abstract-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:final-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:implicit-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:lazy-face ((t (:inherit font-lock-builtin-face :foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:override-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:private-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:protected-face ((t (:foreground "RoyalBlue1" :weight bold))))
+ '(scala-font-lock:sealed-face ((t (:foreground "RoyalBlue1" :weight bold)))))
