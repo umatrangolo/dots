@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Ugo Matrangolo
+	email = ugo.matrangolo@gmail.com
+[core]
+	editor = emacs -nw
+[filter]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+# Please adapt and uncomment the following lines:
+#	name = Ugo Matrangolo
+#	email = umatrangolo@Korovyev.station
