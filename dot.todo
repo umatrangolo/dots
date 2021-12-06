@@ -1,9 +1,0 @@
-* TODO [C] Homepage for the 'Search' project :hbc: :search:
-* TODO [D] GitHook to transform a emacs Org-Mode TODO file into a static htlm file deployed on S3
-           - Simple .todo file versioned on GIT
-           - On each commit a GitHook parses and transforms to HTLM
-           - Possible search using Lunr
-           - Deploy on S3 under todo.umatrangolo.me
-           - HTML view is Read Only (+ some js)
-* TODO [A] Integrate with Product Enriched :hbc: :search: :search-bridge:
-* TODO [A] Augment model with a `wishlist-ability` info :hbc: :search: :search-bridge:
