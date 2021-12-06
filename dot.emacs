@@ -13,7 +13,6 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
-
 (setq backup-directory-alist `(("." . "~/.saves")))    ;; Put all bkps in ~/.saves
 (setq-default case-fold-search nil)                    ;; Turn on case sensitive mode
 
@@ -105,11 +104,6 @@
 (use-package markdown-mode)
 (use-package ag)
 (use-package yaml-mode)
-(use-package solarized-theme)
-
-;; Org-Mode customizations
-(setq org-todo-keywords
-      '((sequence "TODO" "NEXT" "WIP" "|" "DONE" "DELETED")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
