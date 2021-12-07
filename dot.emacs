@@ -63,6 +63,7 @@
 (use-package lsp-mode
   ;; Optional - enable lsp-mode automatically in scala files
   :hook  (scala-mode . lsp)
+         (go-mode . lsp)
          (lsp-mode . lsp-lens-mode)
   :config
   ;; Uncomment following section if you would like to tune lsp-mode performance according to
@@ -105,6 +106,16 @@
 (use-package ag)
 (use-package yaml-mode)
 
+;; GoLang support
+(use-package go-mode)
+
+;; Set up before-save hooks to format buffer and add/delete imports.
+;; Make sure you don't have other gofmt/goimports hooks enabled.
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -113,7 +124,7 @@
  '(custom-safe-themes
    '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
  '(package-selected-packages
-   '(nord-theme yasnippet yaml-mode use-package solarized-theme sbt-mode projectile magit-todos magit-org-todos magit-gh-pulls lsp-ui lsp-metals json-mode js3-mode flycheck exec-path-from-shell company ag))
+   '(go-mode nord-theme yasnippet yaml-mode use-package solarized-theme sbt-mode projectile magit-todos magit-org-todos magit-gh-pulls lsp-ui lsp-metals json-mode js3-mode flycheck exec-path-from-shell company ag))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
