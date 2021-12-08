@@ -116,6 +116,22 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
+;; GUI settings
+;; Font
+(setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+(setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+
+(set-face-attribute 'default nil :font source-code-pro-normal-12)
+
+(when window-system
+  (set-frame-size (selected-frame) 150 69)
+  (global-linum-mode 1) ;; enable global linum mode
+  (global-hl-line-mode 1) ;; hilight current line
+  (set-face-background 'hl-line "yellow")
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
