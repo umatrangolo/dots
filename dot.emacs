@@ -1,5 +1,5 @@
 (setq user-full-name "Ugo Matrangolo")
-(setq user-mail-address "ugo.matrangolo@gmail.com")
+(setq user-mail-address "ugo.matrangolo@gonitro.com")
 
 (setq-default indent-tabs-mode nil)     ;; use always spaces
 (setq-default truncate-lines 1)         ;; do not truncate lines
@@ -69,10 +69,10 @@
   :init (global-flycheck-mode))
 
 (use-package lsp-mode
-  ;; Optional - enable lsp-mode automatically in scala files
   :hook  (scala-mode . lsp)
          (go-mode . lsp)
          (lsp-mode . lsp-lens-mode)
+         (python-ts-mode . lsp)
   :config
   ;; Uncomment following section if you would like to tune lsp-mode performance according to
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/
@@ -125,14 +125,14 @@
 
 ;; GUI settings
 ;; Font
-(setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-(setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+;;(setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
+;;(setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
 
-(set-face-attribute 'default nil :font source-code-pro-normal-12)
+;; (set-face-attribute 'default nil :font source-code-pro-normal-12)
 
 (when window-system
   (set-frame-size (selected-frame) 150 69)
-  (global-linum-mode 1) ;; enable global linum mode
+;;  (global-linum-mode 1) ;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
   (set-face-background 'hl-line "yellow")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -147,11 +147,29 @@
  '(custom-safe-themes
    '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
  '(package-selected-packages
-   '(go-mode nord-theme yasnippet yaml-mode use-package solarized-theme sbt-mode magit-todos magit-org-todos magit-gh-pulls lsp-ui lsp-metals json-mode js3-mode flycheck exec-path-from-shell company ag))
- '(show-paren-mode t))
+   '(terraform-mode spell-fu go-mode nord-theme yasnippet yaml-mode use-package solarized-theme sbt-mode magit-todos magit-org-todos magit-gh-pulls lsp-ui lsp-metals json-mode js3-mode flycheck exec-path-from-shell company ag))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "SF Mono" :foundry "nil" :slant normal :weight regular :height 130 :width normal)))))
+
+;; Tree Sitter(s)
+(setq treesit-language-source-alist
+   '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+     (cmake "https://github.com/uyha/tree-sitter-cmake")
+     (css "https://github.com/tree-sitter/tree-sitter-css")
+     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+     (go "https://github.com/tree-sitter/tree-sitter-go")
+     (html "https://github.com/tree-sitter/tree-sitter-html")
+     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+     (json "https://github.com/tree-sitter/tree-sitter-json")
+     (make "https://github.com/alemuller/tree-sitter-make")
+     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+     (python "https://github.com/tree-sitter/tree-sitter-python")
+     (toml "https://github.com/tree-sitter/tree-sitter-toml")
+     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
