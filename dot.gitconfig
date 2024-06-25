@@ -2,8 +2,9 @@
 [user]
 	name = Ugo Matrangolo
 	email = ugo.matrangolo@gmail.com
+	signingkey = E16408A15D55A1A2F9080DF0A2510AC98CCD5130
 [core]
-	editor = emacs -nw
+	editor = nvim
 [filter]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
@@ -11,3 +12,16 @@
 # Please adapt and uncomment the following lines:
 #	name = Ugo Matrangolo
 #	email = umatrangolo@Korovyev.station
+[init]
+	defaultBranch = master
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	lg = log --pretty='%C(red)%h%Creset%C(yellow)%d%Creset %s %C(cyan)(%ar)%Creset'

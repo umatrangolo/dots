@@ -44,9 +44,9 @@ config.colors = {
   },
   brights = {
     'grey',
-    'red',
+    '#cc0000',
     'lime',
-    'yellow',
+    '#fcba03',
     'blue',
     'fuchsia',
     'dark blue',

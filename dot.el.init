@@ -1,0 +1,81 @@
+;;; package --- Summary
+;;; Commentary:
+;;; TODO:
+;;;   Investigate FlyCheck
+;;;   Add support for Python
+;;;   Add support for Go
+;;;   Add support for Typescript
+(setq user-full-name "Ugo Matrangolo")
+(setq user-mail-address "ugo.matrangolo@gmail.com")
+
+(setq-default indent-tabs-mode nil)     ;; use always spaces
+(setq-default truncate-lines 1)         ;; do not truncate lines
+(setq tab-width 2 indent-tabs-mode nil) ;; no tabs, only 2 spaces for indentation
+(setq make-backup-files nil)            ;; no bkp files
+(show-paren-mode t)                     ;; highlight parens
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)  ;; remove trailing whitespaces on saving
+
+;; force UTF-8
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
+(setq backup-directory-alist `(("." . "~/.saves")))    ;; Put all bkps in ~/.saves
+(setq-default case-fold-search nil)                    ;; Turn on case sensitive mode
+
+(require 'package)
+
+;; Add melpa to your packages repositories
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(package-initialize)
+
+;; Install use-package if not already installed
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+
+;; Enable defer and ensure by default for use-package
+;; Keep auto-save/backup files separate from source code:  https://github.com/scalameta/metals/issues/1027
+(setq use-package-always-defer t
+      use-package-always-ensure t
+      backup-directory-alist `((".*" . ,temporary-file-directory))
+      auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; Use FlyCheck for rendering diagnostics and compile errors.
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+;; Set IDO mode everywhere
+(ido-mode 1)
+(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+
+;; Magit: https://magit.vc
+(use-package magit)
+
+;; Configs for GUI mode
+(when window-system
+  (set-frame-size (selected-frame) 150 69)
+  (global-hl-line-mode 1) ;; hilight current line
+  (set-face-background 'hl-line "yellow")
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
