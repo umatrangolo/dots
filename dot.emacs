@@ -108,6 +108,15 @@
   :config
   (setq lsp-completion-provider :capf))
 
+;; Python LSP support
+(use-package lsp-mode
+    :hook
+  ((python-mode . lsp)))
+
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+
+;; GIT, markdown and other tools
 (use-package magit)
 (use-package markdown-mode)
 (use-package ag)
@@ -123,16 +132,8 @@
   (add-hook 'before-save-hook #'lsp-organize-imports t t))
 (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
-;; GUI settings
-;; Font
-;;(setq source-code-pro-normal-12 "-*-Source Code Pro-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-;;(setq source-code-bold-normal-12 "-*-Source Code Pro-semibold-normal-normal-*-12-*-*-*-m-0-iso10646-1")
-
-;; (set-face-attribute 'default nil :font source-code-pro-normal-12)
-
 (when window-system
   (set-frame-size (selected-frame) 150 69)
-;;  (global-linum-mode 1) ;; enable global linum mode
   (global-hl-line-mode 1) ;; hilight current line
   (set-face-background 'hl-line "yellow")
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -146,8 +147,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("37768a79b479684b0756dec7c0fc7652082910c37d8863c35b702db3f16000f8" default))
+ '(ede-project-directories '("/Users/umatrangolo/Development/dots"))
  '(package-selected-packages
-   '(terraform-mode spell-fu go-mode nord-theme yasnippet yaml-mode use-package solarized-theme sbt-mode magit-todos magit-org-todos magit-gh-pulls lsp-ui lsp-metals json-mode js3-mode flycheck exec-path-from-shell company ag))
+   '(jinja2-mode terraform-mode projectile lsp-metals dockerfile-mode protobuf-mode go-mode nord-theme yasnippet yaml-mode use-package solarized-theme sbt-mode magit-todos magit-org-todos magit-gh-pulls lsp-ui json-mode js3-mode flycheck exec-path-from-shell company ag))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
