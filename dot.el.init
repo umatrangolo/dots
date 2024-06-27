@@ -71,11 +71,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("4c7228157ba3a48c288ad8ef83c490b94cb29ef01236205e360c2c4db200bb18"
+     default))
  '(inhibit-startup-screen t)
- '(package-selected-packages nil))
+ '(package-selected-packages '(company eldoc-box flycheck magit nord-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(eglot-highlight-symbol-face ((t (:background "color-227"))))
+ '(font-lock-comment-face ((t (:background "color-231" :foreground "color-245" :inverse-video t :slant oblique))))
+ '(font-lock-function-name-face ((t (:foreground "#BF616A" :weight bold))))
+ '(font-lock-keyword-face ((t (:foreground "black" :weight bold))))
+ '(font-lock-property-name-face ((t (:inherit font-lock-variable-name-face :foreground "black"))))
+ '(font-lock-string-face ((t (:foreground "#BF616A" :slant normal))))
+ '(font-lock-type-face ((t (:foreground "#5E81AC" :weight semi-bold))))
+ '(font-lock-variable-name-face ((t (:foreground "#5E81AC")))))
