@@ -92,7 +92,7 @@
  '(font-lock-function-name-face ((t (:foreground "color-93" :weight normal))))
  '(font-lock-keyword-face ((t (:foreground "black" :weight bold))))
  '(font-lock-number-face ((t (:foreground "color-88"))))
- '(font-lock-property-name-face ((t (:inherit font-lock-variable-name-face :foreground "cyan"))))
+ '(font-lock-property-name-face ((t (:inherit font-lock-variable-name-face :foreground "black"))))
  '(font-lock-string-face ((t (:foreground "color-52" :slant normal))))
  '(font-lock-type-face ((t (:foreground "color-21" :weight normal))))
  '(font-lock-variable-name-face ((t (:foreground "color-33")))))
