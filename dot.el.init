@@ -83,7 +83,9 @@
  ;; If there is more than one, they won't work right.
  '(eglot-highlight-symbol-face ((t (:background "color-227"))))
  '(flycheck-error ((t (:inherit error :background "color-196" :foreground "color-226" :underline t))))
+ '(flycheck-warning ((t (:inherit warning :underline t :weight normal))))
  '(flymake-error ((t (:inherit error :background "color-196" :foreground "color-226"))))
+ '(flymake-warning ((t (:inherit warning :weight normal))))
  '(font-lock-comment-face ((t (:background "color-231" :foreground "color-245" :inverse-video nil :slant normal))))
  '(font-lock-constant-face ((t (:foreground "cyan"))))
  '(font-lock-doc-face ((t (:inherit font-lock-string-face :background "color-231" :foreground "color-245"))))
