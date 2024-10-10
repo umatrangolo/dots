@@ -27,7 +27,6 @@
 
 ;; Add melpa to your packages repositories
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
 (package-initialize)
 
 ;; Install use-package if not already installed
@@ -36,6 +35,11 @@
   (package-install 'use-package))
 
 (require 'use-package)
+
+;; Require company for completion at a point
+;; see: https://company-mode.github.io
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode) ;; make sure to start init everywhere
 
 ;; Enable defer and ensure by default for use-package
 ;; Keep auto-save/backup files separate from source code:  https://github.com/scalameta/metals/issues/1027
@@ -66,6 +70,27 @@
   (scroll-bar-mode -1)
   (tool-bar-mode -1))
 
+;; Configure Metals for Scala
+;; Enable scala-ts-mode and sbt-mode
+(use-package scala-ts-mode
+  :interpreter ("scala" . scala-ts-mode))
+
+;; Enable sbt mode for executing sbt commands
+(use-package sbt-mode
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map)
+   ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+   (setq sbt:program-options '("-Dsbt.supershell=false")))
+
+;; Setup for Org mode
+(require 'org)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -75,7 +100,11 @@
    '("4c7228157ba3a48c288ad8ef83c490b94cb29ef01236205e360c2c4db200bb18"
      default))
  '(inhibit-startup-screen t)
- '(package-selected-packages '(company eldoc-box flycheck magit nord-theme)))
+ '(package-selected-packages
+   '(eglot eldoc-box flycheck magit markdown-mode
+             markdown-ts-mode nord-theme sbt-mode scala-ts-mode
+             terraform-mode))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
