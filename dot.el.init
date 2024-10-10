@@ -95,6 +95,25 @@
 ;; Setup for Org mode
 (require 'org)
 
+;; Optional: install eglot-format-buffer as a save hook.
+;; The depth of -10 places this before eglot's willSave notification,
+;; so that that notification reports the actual contents that will be saved.
+(defun eglot-format-buffer-before-save ()
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
+(add-hook 'go-ts-mode-hook #'eglot-format-buffer-before-save)
+
+;; Format imports before saving iff in eglot mode
+(add-hook 'before-save-hook
+    (lambda ()
+        (call-interactively 'eglot-code-action-organize-imports)
+        (call-interactively 'eglot-format))
+    nil t)
+
+;; Add metals for the scala-ts-mode major mode
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(scala-ts-mode . ("metals"))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
