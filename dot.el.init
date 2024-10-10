@@ -101,7 +101,7 @@
      default))
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(eglot eldoc-box flycheck magit markdown-mode
+   '(eldoc-box flycheck magit markdown-mode
              markdown-ts-mode nord-theme sbt-mode scala-ts-mode
              terraform-mode))
  '(tool-bar-mode nil))
