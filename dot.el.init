@@ -63,7 +63,7 @@
 (setq ido-enable-flex-matching t)
 
 ;; Magit: https://magit.vc
-(use-package magit)
+(require 'magit)
 
 ;; Configs for GUI mode
 (when window-system
@@ -105,7 +105,7 @@
      default))
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(flycheck magit markdown-mode
+   '(markdown-mode
              markdown-ts-mode nord-theme sbt-mode scala-ts-mode
              terraform-mode))
  '(tool-bar-mode nil))
