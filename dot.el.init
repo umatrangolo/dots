@@ -1,10 +1,10 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; TODO:
-;;;   Investigate FlyCheck
-;;;   Add support for Python
-;;;   Add support for Go
-;;;   Add support for Typescript
+;;;   [ ] Investigate FlyCheck
+;;;   [x] Add support for Python
+;;;   [x] Add support for Go
+;;;   [ ] Add support for Typescript
 (setq user-full-name "Ugo Matrangolo")
 (setq user-mail-address "ugo.matrangolo@gmail.com")
 
@@ -38,11 +38,11 @@
 
 ;; Require company for completion at a point
 ;; see: https://company-mode.github.io
-(require 'company)
+(use-package company)
 (add-hook 'after-init-hook 'global-company-mode) ;; make sure to start init everywhere
 
 ;; Require eldoc-box to show docs in a child frame in the GUI version of emacs.
-(require 'eldoc-box)
+(use-package eldoc-box)
 (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
 
 ;; Enable defer and ensure by default for use-package
@@ -63,7 +63,7 @@
 (setq ido-enable-flex-matching t)
 
 ;; Magit: https://magit.vc
-(require 'magit)
+(use-package magit)
 
 ;; Configs for GUI mode
 (when window-system
@@ -93,7 +93,7 @@
    (setq sbt:program-options '("-Dsbt.supershell=false")))
 
 ;; Setup for Org mode
-(require 'org)
+(use-package org)
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
