@@ -41,6 +41,10 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode) ;; make sure to start init everywhere
 
+;; Require eldoc-box to show docs in a child frame in the GUI version of emacs.
+(require 'eldoc-box)
+(add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
+
 ;; Enable defer and ensure by default for use-package
 ;; Keep auto-save/backup files separate from source code:  https://github.com/scalameta/metals/issues/1027
 (setq use-package-always-defer t
@@ -101,7 +105,7 @@
      default))
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(eldoc-box flycheck magit markdown-mode
+   '(flycheck magit markdown-mode
              markdown-ts-mode nord-theme sbt-mode scala-ts-mode
              terraform-mode))
  '(tool-bar-mode nil))
