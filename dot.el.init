@@ -36,15 +36,6 @@
 
 (require 'use-package)
 
-;; Require company for completion at a point
-;; see: https://company-mode.github.io
-(use-package company)
-(add-hook 'after-init-hook 'global-company-mode) ;; make sure to start init everywhere
-
-;; Require eldoc-box to show docs in a child frame in the GUI version of emacs.
-(use-package eldoc-box)
-(add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
-
 ;; Enable defer and ensure by default for use-package
 ;; Keep auto-save/backup files separate from source code:  https://github.com/scalameta/metals/issues/1027
 (setq use-package-always-defer t
@@ -52,10 +43,21 @@
       backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; Require company for completion at a point
+;; see: https://company-mode.github.io
+(use-package company
+    :ensure t)
+(add-hook 'after-init-hook 'global-company-mode) ;; make sure to start init everywhere
+
+;; Require eldoc-box to show docs in a child frame in the GUI version of emacs.
+(use-package eldoc-box
+    :ensure t)
+(add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
+
 ;; Use FlyCheck for rendering diagnostics and compile errors.
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode))
+;;(use-package flycheck
+;;    :ensure t
+;;    :init (global-flycheck-mode))
 
 ;; Set IDO mode everywhere
 (ido-mode 1)
@@ -63,37 +65,28 @@
 (setq ido-enable-flex-matching t)
 
 ;; Magit: https://magit.vc
-(use-package magit)
-
-;; Configs for GUI mode
-(when window-system
-  (set-frame-size (selected-frame) 150 69)
-  (global-hl-line-mode 1) ;; hilight current line
-  (set-face-background 'hl-line "yellow")
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (scroll-bar-mode -1)
-  (tool-bar-mode -1))
+(use-package magit
+    :ensure t)
 
 ;; Configure Metals for Scala
 ;; Enable scala-ts-mode and sbt-mode
 (use-package scala-ts-mode
-  :interpreter ("scala" . scala-ts-mode))
+    :ensure t
+    :interpreter ("scala" . scala-ts-mode))
 
 ;; Enable sbt mode for executing sbt commands
 (use-package sbt-mode
-  :commands sbt-start sbt-command
-  :config
-  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-  ;; allows using SPACE when in the minibuffer
-  (substitute-key-definition
-   'minibuffer-complete-word
-   'self-insert-command
-   minibuffer-local-completion-map)
-   ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
-   (setq sbt:program-options '("-Dsbt.supershell=false")))
-
-;; Setup for Org mode
-(use-package org)
+    :ensure t
+    :commands sbt-start sbt-command
+    :config
+    ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+    ;; allows using SPACE when in the minibuffer
+    (substitute-key-definition
+     'minibuffer-complete-word
+     'self-insert-command
+     minibuffer-local-completion-map)
+    ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+    (setq sbt:program-options '("-Dsbt.supershell=false")))
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
@@ -114,6 +107,19 @@
   (add-to-list 'eglot-server-programs
                '(scala-ts-mode . ("metals"))))
 
+;; Add all the *-ts-mode to major modes
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
+
+;; Configs for GUI mode
+(when window-system
+  (set-frame-size (selected-frame) 150 69)
+  (global-hl-line-mode 1) ;; hilight current line
+  (set-face-background 'hl-line "yellow")
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (scroll-bar-mode -1)
+  (tool-bar-mode -1))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -124,9 +130,7 @@
      default))
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(markdown-mode
-             markdown-ts-mode nord-theme sbt-mode scala-ts-mode
-             terraform-mode))
+   '(## markdown-mode markdown-ts-mode nord-theme sbt-mode terraform-mode))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
