@@ -43,6 +43,14 @@
       backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
+;; Add all the *-ts-mode to major modes
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.sbt\\'" . scala-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.el\\'" . lisp-mode))
+
 ;; Require company for completion at a point
 ;; see: https://company-mode.github.io
 (use-package company
@@ -102,14 +110,11 @@
         (call-interactively 'eglot-format))
     nil t)
 
-;; Add metals for the scala-ts-mode major mode
+;; Add LSPs to major modes
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(scala-ts-mode . ("metals"))))
-
-;; Add all the *-ts-mode to major modes
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
+               '(scala-ts-mode . ("metals" "-Dmetals.client=emacs"))
+               '(python-ts-mode . ("pyslp" "pylsp.plugins.pylint.enabled" "pylsp.plugins.pylint.args --errors-only"))))
 
 ;; Configs for GUI mode
 (when window-system
@@ -130,7 +135,8 @@
      default))
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(## markdown-mode markdown-ts-mode nord-theme sbt-mode terraform-mode))
+   '(company eglot eldoc-box flycheck magit markdown-ts-mode markdownfmt
+             org-journal sbt-mode scala-ts-mode tango-plus-theme))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -138,8 +144,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(eglot-highlight-symbol-face ((t (:background "color-227"))))
- '(flycheck-error ((t (:inherit error :background "color-196" :foreground "color-226" :underline t))))
- '(flycheck-warning ((t (:inherit warning :underline t :weight normal))))
  '(flymake-error ((t (:inherit error :background "color-196" :foreground "color-226"))))
  '(flymake-warning ((t (:inherit warning :weight normal))))
  '(font-lock-comment-face ((t (:background "color-231" :foreground "color-245" :inverse-video nil :slant normal))))
