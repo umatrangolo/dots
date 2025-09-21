@@ -1,9 +1,6 @@
 ;;; package --- Summary
 ;;; Commentary:
 ;;; TODO:
-;;;   [ ] Investigate FlyCheck
-;;;   [x] Add support for Python
-;;;   [x] Add support for Go
 ;;;   [ ] Add support for Typescript
 (setq user-full-name "Ugo Matrangolo")
 (setq user-mail-address "ugo.matrangolo@gmail.com")
