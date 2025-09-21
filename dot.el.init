@@ -115,6 +115,13 @@
   (add-to-list 'eglot-server-programs
                '(scala-ts-mode . ("metals" "-Dmetals.client=emacs"))
                '(python-ts-mode . ("pyslp" "pylsp.plugins.pylint.enabled" "pylsp.plugins.pylint.args --errors-only"))))
+               '(scala-ts-mode . ("metals" "-Dmetals.client=emacs"))))
+
+;; Add all the *-ts-mode to major modes
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.sbt\\'" . scala-ts-mode))
 
 ;; Configs for GUI mode
 (when window-system
@@ -156,3 +163,4 @@
  '(font-lock-string-face ((t (:foreground "color-52" :slant normal))))
  '(font-lock-type-face ((t (:foreground "color-21" :weight normal))))
  '(font-lock-variable-name-face ((t (:foreground "color-33")))))
+(put 'dired-find-alternate-file 'disabled nil)
