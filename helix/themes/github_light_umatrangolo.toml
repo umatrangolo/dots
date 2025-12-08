@@ -1,0 +1,4 @@
+inherits = "github_light"
+
+# Override the theming for "keyword"s:
+keyword = { modifiers = ["bold"] }

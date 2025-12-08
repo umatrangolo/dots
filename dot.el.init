@@ -111,7 +111,7 @@
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                '(scala-ts-mode . ("metals" "-Dmetals.client=emacs"))
-               '(python-ts-mode . ("pyslp" "pylsp.plugins.pylint.enabled" "pylsp.plugins.pylint.args --errors-only"))))
+               '(python-ts-mode . ("pyslp" "pylsp.plugins.pylint.enabled" "pylsp.plugins.pylint.args --errors-only"))
                '(scala-ts-mode . ("metals" "-Dmetals.client=emacs"))))
 
 ;; Add all the *-ts-mode to major modes
