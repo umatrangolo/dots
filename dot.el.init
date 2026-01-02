@@ -20,49 +20,35 @@
 (setq backup-directory-alist `(("." . "~/.saves")))    ;; Put all bkps in ~/.saves
 (setq-default case-fold-search nil)                    ;; Turn on case sensitive mode
 
-(require 'package)
-
 ;; Add melpa to your packages repositories
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-;; Install use-package if not already installed
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(require 'use-package)
-
-;; Enable defer and ensure by default for use-package
-;; Keep auto-save/backup files separate from source code:  https://github.com/scalameta/metals/issues/1027
-(setq use-package-always-defer t
-      use-package-always-ensure t
-      backup-directory-alist `((".*" . ,temporary-file-directory))
-      auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
-
+;; == Tree Sitter support ==
 ;; Add all the *-ts-mode to major modes
+
+;; Enable scala-ts-mode
+;; Scala ts mode is not built into emacs: needs to be installed as
+;; separate package.
+;; ref: https://github.com/KaranAhlawat/scala-ts-mode
+(use-package scala-ts-mode
+    :ensure t
+    :interpreter ("scala" . scala-ts-mode))
+
+;; This adds to each major mode the corresponding tree sitter support.
+;; The 'auto-mode-alist is the list where for each file extension there
+;; is the corresponding major mode to activate.
+;; ref: https://www.gnu.org/software/emacs/manual/html_node/elisp/Auto-Major-Mode.html#index-auto_002dmode_002dalist
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.sbt\\'" . scala-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.el\\'" . lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode))
 
-;; Require company for completion at a point
-;; see: https://company-mode.github.io
-(use-package company
-    :ensure t)
-(add-hook 'after-init-hook 'global-company-mode) ;; make sure to start init everywhere
-
-;; Require eldoc-box to show docs in a child frame in the GUI version of emacs.
-(use-package eldoc-box
-    :ensure t)
-(add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
-
-;; Use FlyCheck for rendering diagnostics and compile errors.
-;;(use-package flycheck
-;;    :ensure t
-;;    :init (global-flycheck-mode))
+;; == Developments support ==
 
 ;; Set IDO mode everywhere
 (ido-mode 1)
@@ -73,25 +59,18 @@
 (use-package magit
     :ensure t)
 
-;; Configure Metals for Scala
-;; Enable scala-ts-mode and sbt-mode
-(use-package scala-ts-mode
-    :ensure t
-    :interpreter ("scala" . scala-ts-mode))
+;; Auto completion with Company
+;; ref: https://company-mode.github.io
+(use-package company
+    :ensure t)
+(add-hook 'after-init-hook 'global-company-mode) ;; make sure to start everywhere
 
-;; Enable sbt mode for executing sbt commands
-(use-package sbt-mode
-    :ensure t
-    :commands sbt-start sbt-command
-    :config
-    ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-    ;; allows using SPACE when in the minibuffer
-    (substitute-key-definition
-     'minibuffer-complete-word
-     'self-insert-command
-     minibuffer-local-completion-map)
-    ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
-    (setq sbt:program-options '("-Dsbt.supershell=false")))
+;; Require eldoc-box to show docs in a child frame in the GUI version of emacs.
+(use-package eldoc-box
+    :ensure t)
+(add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
+
+;; == LSP ==
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
@@ -107,18 +86,7 @@
         (call-interactively 'eglot-format))
     nil t)
 
-;; Add LSPs to major modes
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(scala-ts-mode . ("metals" "-Dmetals.client=emacs"))
-               '(python-ts-mode . ("pyslp" "pylsp.plugins.pylint.enabled" "pylsp.plugins.pylint.args --errors-only"))
-               '(scala-ts-mode . ("metals" "-Dmetals.client=emacs"))))
-
-;; Add all the *-ts-mode to major modes
-(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.sbt\\'" . scala-ts-mode))
+;; == GUI ==
 
 ;; Configs for GUI mode
 (when window-system
@@ -134,30 +102,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("4c7228157ba3a48c288ad8ef83c490b94cb29ef01236205e360c2c4db200bb18"
-     default))
- '(inhibit-startup-screen t)
- '(package-selected-packages
-   '(company eglot eldoc-box flycheck magit markdown-ts-mode markdownfmt
-             org-journal sbt-mode scala-ts-mode tango-plus-theme))
- '(tool-bar-mode nil))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(eglot-highlight-symbol-face ((t (:background "color-227"))))
- '(flymake-error ((t (:inherit error :background "color-196" :foreground "color-226"))))
- '(flymake-warning ((t (:inherit warning :weight normal))))
- '(font-lock-comment-face ((t (:background "color-231" :foreground "color-245" :inverse-video nil :slant normal))))
- '(font-lock-constant-face ((t (:foreground "cyan"))))
- '(font-lock-doc-face ((t (:inherit font-lock-string-face :background "color-231" :foreground "color-245"))))
- '(font-lock-function-name-face ((t (:foreground "color-93" :weight normal))))
- '(font-lock-keyword-face ((t (:foreground "black" :weight bold))))
- '(font-lock-number-face ((t (:foreground "color-88"))))
- '(font-lock-property-name-face ((t (:inherit font-lock-variable-name-face :foreground "black"))))
- '(font-lock-string-face ((t (:foreground "color-52" :slant normal))))
- '(font-lock-type-face ((t (:foreground "color-21" :weight normal))))
- '(font-lock-variable-name-face ((t (:foreground "color-33")))))
-(put 'dired-find-alternate-file 'disabled nil)
+ )
