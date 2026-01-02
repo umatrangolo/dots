@@ -1,4 +1,10 @@
 inherits = "github_light"
 
-# Override the theming for "keyword"s:
 keyword = { modifiers = ["bold"] }
+"ui.background" = { bg = "white" }
+"ui.statusline" = { bg = "apricot" }
+
+[palette]
+white = "#ffffff"
+lavender = "#a4a0e8"
+apricot = "#f47868"

@@ -1,4 +1,4 @@
-theme = "github_light_umatrangolo"
+theme = "simple"
 
 [editor]
 trim-trailing-whitespace = true
@@ -14,7 +14,7 @@ display-progress-messages = true
 display-inlay-hints = false
 
 [editor.whitespace]
-render = "all"
+reqnder = "all"
 space = "."
 
 [editor.statusline]

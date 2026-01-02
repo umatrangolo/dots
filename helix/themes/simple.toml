@@ -1,0 +1,81 @@
+inherits = "default"
+
+keyword = { fg = "black", modifiers = ["bold"] }
+comment = { fg = "gray", modifiers = ["italic"] }
+spell = { fg = "red", modifiers = ["bold"] }
+
+type = { fg = "science_blue" }
+"type.definition" = { fg = "black", modifiers = ["bold"] }
+"type.qualifier" = { fg = "black", modifiers = ["bold"] }
+"type.builtin" = "black"
+
+storageclass = { fg = "black", modifiers = ["bold"] }
+string = "office_green"
+number = "patriarch"
+
+constant = "science_blue"
+"constant.builtin" = "orchid"
+"constant.numeric" = "orchid"
+"constant.character.escape" = "orchid"
+
+attribute = "blue"
+
+function = "black"
+"function.macro" = "black"
+"function.builtin" = "black"
+"function.call" = "vivid_orange"
+"function.method" = "vivid_orange"
+"method.call" = "vivid_orange"
+"generic_function" = "red"
+
+include = { fg = "black", modifiers = ["bold"] }
+
+constructor = "black"
+
+namespace = "black"
+punctuation = "black"
+"punctuation.delimiter" = "black"
+operator = "black"
+
+variable = "black"
+"variable.other.member" = "black"
+"variable.parameter" = "black"
+"variable.builtin" = "black"
+
+"ui.background" = { bg = "white" }
+"ui.statusline" = { fg = "black", bg = "pale_blue" }
+"ui.statusline.inactive" = { fg = "black", bg = "gray" }
+"ui.linenr.selected" = { fg = "black", bg = "white", modifiers = ["bold"] }
+"ui.popup" = { fg = "black", bg = "pale_yellow" }
+"ui.text" = { fg = "black" }
+"ui.text.focus" = { fg = "black", bg = "apricot", modifiers = ["bold"] }
+"ui.text.inactive" = "light-gray"
+"ui.text.directory" = { fg = "black" }
+"ui.virtual" = { fg = "black" }
+"ui.virtual.ruler" = { bg = "black" }
+"ui.virtual.jump-label" = { fg = "apricot", modifiers = ["bold"] }
+"ui.selection" = { bg = "blue", fg = "white", modifiers = ["bold"] }
+"ui.selection.primary" = { bg = "blue", modifiers = ["bold"] }
+"ui.menu.selected" = { fg = "white", bg = "pale_blue", modifiers = ["bold"] }
+"ui.cursorline.primary" = { fg = "black", bg = "cream" }
+"ui.gutter" = { fg = "black", bg = "white" }
+"ui.gutter.selected" = { fg = "black", bg = "white" }
+"ui.menu" = { bg = "pale_blue", fg = "black" }
+"ui.help" = { bg = "pale_blue", fg = "black" }
+
+error = { fg = "red" }
+warning = { fg = "yellow" }
+diagnostic.error = { fg = "red" }
+
+[palette]
+"science_blue" = "#005fd7"
+"office_green" = "#008000"
+"patriarch" = "#800080"
+"orchid" = "#d75fd7"
+"vivid_orange" = "#ff5f00"
+"malibu" = "#87afff"
+"pale_blue" = "#afd7ff"
+"pale_yellow" = "#ffffaf"
+"cream" = "#ffffd7"
+"red" = "#ff0000"
+"yellow" = "#ffff00"
