@@ -5,9 +5,9 @@ comment = { fg = "gray", modifiers = ["italic"] }
 spell = { fg = "red", modifiers = ["bold"] }
 
 type = { fg = "science_blue" }
-"type.definition" = { fg = "black", modifiers = ["bold"] }
+"type.definition" = { fg = "science_blue", modifiers = ["bold"] }
 "type.qualifier" = { fg = "black", modifiers = ["bold"] }
-"type.builtin" = "black"
+"type.builtin" = { fg = "science_blue", modifiers = ["italic"] }
 
 storageclass = { fg = "black", modifiers = ["bold"] }
 string = "office_green"
@@ -22,7 +22,7 @@ attribute = "blue"
 
 function = "black"
 "function.macro" = "black"
-"function.builtin" = "black"
+"function.builtin" = { fg = "black", modifiers = ["italic"] }
 "function.call" = "vivid_orange"
 "function.method" = "vivid_orange"
 "method.call" = "vivid_orange"
@@ -32,13 +32,15 @@ include = { fg = "black", modifiers = ["bold"] }
 
 constructor = "black"
 
+"keyword.import" = { fg = "black", modifiers = ["bold"] }
+
 namespace = "black"
 punctuation = "black"
 "punctuation.delimiter" = "black"
 operator = "black"
 
 variable = "black"
-"variable.other.member" = "black"
+"variable.other.member" = "science_blue"
 "variable.parameter" = "black"
 "variable.builtin" = "black"
 
