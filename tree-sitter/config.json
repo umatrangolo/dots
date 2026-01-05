@@ -1,0 +1,50 @@
+{
+  "parser-directories": [
+    "/Users/umatrangolo/Development"
+  ],
+  "theme": {
+    "comment": {
+      "color": "#808080",
+      "italic": true
+    },
+    "spell": {
+      "color": "red",
+      "bold": true
+    },
+    "keyword": {
+      "color": "black",
+      "bold": true
+    },
+    "type": {
+      "color": "#005fd7"
+    },
+    "type.definition": {
+      "color": "red",
+      "bold": true
+    },
+    "type.qualifier": {
+      "color": "black",
+      "bold": true
+    },
+    "storageclass": {
+      "color": "black",
+      "bold": true
+    },
+    "string": {
+      "color": "#008000"
+    },
+    "number": "#800080",
+    "constant": "#d75fd7",
+    "attribute": "blue",
+    "function.call": {
+      "color": "#ff5f00"
+    },
+    "method.call": {
+      "color": "#ff5f00"
+    },
+    "include": {
+      "color": "black",
+      "bold": true
+    }
+  }
+}
