@@ -48,7 +48,7 @@ variable = "black"
 "ui.statusline" = { fg = "black", bg = "pale_blue" }
 "ui.statusline.inactive" = { fg = "black", bg = "gray" }
 "ui.linenr.selected" = { fg = "black", bg = "white", modifiers = ["bold"] }
-"ui.popup" = { fg = "black", bg = "pale_yellow" }
+"ui.popup" = { fg = "black", bg = "gallery" }
 "ui.text" = { fg = "black" }
 "ui.text.focus" = { fg = "black", bg = "apricot", modifiers = ["bold"] }
 "ui.text.inactive" = "light-gray"
@@ -56,8 +56,8 @@ variable = "black"
 "ui.virtual" = { fg = "black" }
 "ui.virtual.ruler" = { bg = "black" }
 "ui.virtual.jump-label" = { fg = "apricot", modifiers = ["bold"] }
-"ui.selection" = { bg = "blue", fg = "white", modifiers = ["bold"] }
-"ui.selection.primary" = { bg = "blue", modifiers = ["bold"] }
+"ui.selection" = { bg = "pale_blue", fg = "white", modifiers = ["bold"] }
+"ui.selection.primary" = { bg = "pale_blue", modifiers = ["bold"] }
 "ui.menu.selected" = { fg = "white", bg = "pale_blue", modifiers = ["bold"] }
 "ui.cursorline.primary" = { fg = "black", bg = "cream" }
 "ui.gutter" = { fg = "black", bg = "white" }
@@ -65,9 +65,15 @@ variable = "black"
 "ui.menu" = { bg = "pale_blue", fg = "black" }
 "ui.help" = { bg = "pale_blue", fg = "black" }
 
+
 error = { fg = "red" }
 warning = { fg = "yellow" }
 diagnostic.error = { fg = "red" }
+
+# Markdown
+"markup.heading" = { fg = "blue", modifiers = ["bold", "italic"] }
+"markup.link.text" = { fg = "gray" }
+"markup.raw" = { fg = "gray", modifiers = ["italic"] }
 
 [palette]
 "science_blue" = "#005fd7"
@@ -81,3 +87,5 @@ diagnostic.error = { fg = "red" }
 "cream" = "#ffffd7"
 "red" = "#ff0000"
 "yellow" = "#ffff00"
+"gallery" = "#eeeeee"
+"mercury" = "#e4e4e4"
