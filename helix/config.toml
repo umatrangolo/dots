@@ -6,8 +6,7 @@ cursorline = true
 text-width = 132
 trim-final-newlines = true
 indent-heuristic = 'tree-sitter'
-
-#end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "hint"
 
 [editor.lsp]
 display-progress-messages = true
@@ -40,3 +39,6 @@ wrap-indicator = ""  # set wrap-indicator to "" to hide it
 
 [editor.file-picker]
 hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
