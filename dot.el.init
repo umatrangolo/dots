@@ -3,7 +3,7 @@
 ;;; TODO:
 ;;;   [ ] Add support for Typescript
 (setq user-full-name "Ugo Matrangolo")
-(setq user-mail-address "ugo.matrangolo@gmail.com")
+:(setq user-mail-address "ugo.matrangolo@gmail.com")
 
 (setq-default indent-tabs-mode nil)     ;; use always spaces
 (setq-default truncate-lines 1)         ;; do not truncate lines
@@ -70,7 +70,31 @@
     :ensure t)
 (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
 
-;; == LSP ==
+;; Shows GIT changes in the gutter
+(use-package diff-hl
+    :ensure t)
+(global-diff-hl-mode)
+
+;; Enable Vertico.
+(use-package vertico
+  :custom
+  ;; (vertico-scroll-margin 0) ;; Different scroll margin
+  (vertico-count 20) ;; Show more candidates
+  (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  :init
+  (vertico-mode))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
+
+;; See: https://github.com/emacsmirror/git-timemachine
+(use-package git-timemachine
+    :ensure t)
+
+;; == Development ==
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
@@ -85,6 +109,21 @@
         (call-interactively 'eglot-code-action-organize-imports)
         (call-interactively 'eglot-format))
     nil t)
+
+;; (fringe-mode '(8 . 8))
+;; ;; == Scala/SBT support ==
+;; ;; Enable sbt mode for executing sbt commands
+;; (use-package sbt-mode
+;;   :commands sbt-start sbt-command
+;;   :config
+;;   ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+;;   ;; allows using SPACE when in the minibuffer
+;;   (substitute-key-definition
+;;    'minibuffer-complete-word
+;;    'self-insert-command
+;;    minibuffer-local-completion-map)
+;;    ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+;;    (setq sbt:program-options '("-Dsbt.supershell=false")))
 
 ;; == GUI ==
 
