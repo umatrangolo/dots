@@ -25,6 +25,9 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; Remove the code action light-bulb emoji: it messes up the screen in text mode.
+(setq eglot-ignored-server-capabilities '(:codeActionProvider))
+
 ;; == Tree Sitter support ==
 ;; Add all the *-ts-mode to major modes
 
@@ -70,7 +73,7 @@
     :ensure t)
 (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t) ;; use eldoc-box with eglot
 
-;; Shows GIT changes in the gutter
+;; Shows GIT changes in the fringe
 (use-package diff-hl
     :ensure t)
 (global-diff-hl-mode)
@@ -96,6 +99,12 @@
 
 ;; == Development ==
 
+;; eglot overrides
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               `(scala-ts-mode . ("metals", "--java-opt", "-XX:+UseG1GC", "--java-opt", "-XX:+UseStringDeduplication", "--java-opt", "-Xss4m", "--java-opt", "-Xms100m", "--java-opt", "-Dmetals.client=emacs"))))
+
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
 ;; so that that notification reports the actual contents that will be saved.
@@ -109,21 +118,6 @@
         (call-interactively 'eglot-code-action-organize-imports)
         (call-interactively 'eglot-format))
     nil t)
-
-;; (fringe-mode '(8 . 8))
-;; ;; == Scala/SBT support ==
-;; ;; Enable sbt mode for executing sbt commands
-;; (use-package sbt-mode
-;;   :commands sbt-start sbt-command
-;;   :config
-;;   ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-;;   ;; allows using SPACE when in the minibuffer
-;;   (substitute-key-definition
-;;    'minibuffer-complete-word
-;;    'self-insert-command
-;;    minibuffer-local-completion-map)
-;;    ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
-;;    (setq sbt:program-options '("-Dsbt.supershell=false")))
 
 ;; == GUI ==
 
