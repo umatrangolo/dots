@@ -101,6 +101,7 @@
 
 ;; eglot overrides
 
+;; Make sure that metals works with emacs
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                `(scala-ts-mode . ("metals", "--java-opt", "-XX:+UseG1GC", "--java-opt", "-XX:+UseStringDeduplication", "--java-opt", "-Xss4m", "--java-opt", "-Xms100m", "--java-opt", "-Dmetals.client=emacs"))))
