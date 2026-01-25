@@ -1,4 +1,4 @@
-;;; package --- Summary
+;; package --- Summary
 ;;; Commentary:
 ;;; TODO:
 ;;;   [ ] Add support for Typescript
@@ -27,6 +27,10 @@
 
 ;; Remove the code action light-bulb emoji: it messes up the screen in text mode.
 (setq eglot-ignored-server-capabilities '(:codeActionProvider))
+
+;; Appearence
+(menu-bar-mode 0)           ;; no menu bar
+(setq column-number-mode t) ;; show the col number
 
 ;; == Tree Sitter support ==
 ;; Add all the *-ts-mode to major modes
@@ -60,7 +64,11 @@
 
 ;; Magit: https://magit.vc
 (use-package magit
-    :ensure t)
+  :ensure t
+  :config
+  (setq magit-log-arguments '("-n256" "--graph" "--decorate" "--color")
+        ;; Show diffs per word, looks nicer!
+        magit-diff-refine-hunk t))
 
 ;; Auto completion with Company
 ;; ref: https://company-mode.github.io
