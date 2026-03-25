@@ -20,6 +20,15 @@
 (setq backup-directory-alist `(("." . "~/.saves")))    ;; Put all bkps in ~/.saves
 (setq-default case-fold-search nil)                    ;; Turn on case sensitive mode
 
+;; Tell emacs to store its lock files away from projects to avoid
+;; confusion with LSPs watching source code changes.
+(setq lock-file-name-transforms
+      '((".*" "~/.emacs-lockfiles/" t)))
+
+;; Make more readable markdown docs in ELDoc
+(setq eglot-prefer-plaintext t)
+(setq eldoc-echo-area-use-multiline-p t)
+
 ;; Add melpa to your packages repositories
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -62,6 +71,18 @@
 (setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
 
+;; Flycheck is much better than flymake
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+;; Eglot only support flymake out of the box
+(use-package flycheck-eglot
+  :ensure t
+  :after (flycheck eglot)
+  :config
+  (global-flycheck-eglot-mode 1))
+
 ;; Magit: https://magit.vc
 (use-package magit
   :ensure t
@@ -76,6 +97,11 @@
     :ensure t)
 (add-hook 'after-init-hook 'global-company-mode) ;; make sure to start everywhere
 
+(use-package company-quickhelp
+  :after (company)
+  :config
+  (company-quickhelp-mode))
+
 ;; Require eldoc-box to show docs in a child frame in the GUI version of emacs.
 (use-package eldoc-box
     :ensure t)
@@ -85,16 +111,6 @@
 (use-package diff-hl
     :ensure t)
 (global-diff-hl-mode)
-
-;; Enable Vertico.
-(use-package vertico
-  :custom
-  ;; (vertico-scroll-margin 0) ;; Different scroll margin
-  (vertico-count 20) ;; Show more candidates
-  (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
-  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
-  :init
-  (vertico-mode))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
@@ -112,7 +128,7 @@
 ;; Make sure that metals works with emacs
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               `(scala-ts-mode . ("metals", "--java-opt", "-XX:+UseG1GC", "--java-opt", "-XX:+UseStringDeduplication", "--java-opt", "-Xss4m", "--java-opt", "-Xms100m", "--java-opt", "-Dmetals.client=emacs"))))
+               `(scala-ts-mode . ("metals", "--java-opt", "-XX:+UseG1GC", "--java-opt", "-XX:+UseStringDeduplication", "--java-opt", "-Xss4m", "--java-opt", "-Xms100m", "--java-opt", "-Dmetals.client=emacs", "-Dmetals.http=on"))))
 
 ;; Optional: install eglot-format-buffer as a save hook.
 ;; The depth of -10 places this before eglot's willSave notification,
@@ -127,6 +143,13 @@
         (call-interactively 'eglot-code-action-organize-imports)
         (call-interactively 'eglot-format))
     nil t)
+
+(use-package markdown-ts-mode
+  :mode ("\\.md\\'" . markdown-ts-mode)
+  :defer 't
+  :config
+  (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+  (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")))
 
 ;; == GUI ==
 
@@ -144,7 +167,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil)
+ '(custom-safe-themes
+   '("efcecf09905ff85a7c80025551c657299a4d18c5fcfedd3b2f2b6287e4edd659"
+     "285d1bf306091644fb49993341e0ad8bafe57130d9981b680c1dbd974475c5c7"
+     "2b0fcc7cc9be4c09ec5c75405260a85e41691abb1ee28d29fcd5521e4fca575b"
+     "0f9a1b7a0f1d09544668297c1f04e5a5452ae1f4cf69f11b125f4cff1d54783d"
+     default))
+ '(package-selected-packages
+   '(company company-quickhelp diff-hl eglot eldoc-box flycheck
+             flycheck-eglot git-timemachine magit markdown-ts-mode
+             scala-ts-mode solarized-theme terraform-mode vertico))
  '(treesit-font-lock-level 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
