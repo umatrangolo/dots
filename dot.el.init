@@ -151,6 +151,16 @@
   (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
   (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")))
 
+;; Enable Vertico.
+(use-package vertico
+  :custom
+  ;; (vertico-scroll-margin 0) ;; Different scroll margin
+  (vertico-count 20) ;; Show more candidates
+  (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  :init
+  (vertico-mode))
+
 ;; == GUI ==
 
 ;; Configs for GUI mode
@@ -173,10 +183,7 @@
      "2b0fcc7cc9be4c09ec5c75405260a85e41691abb1ee28d29fcd5521e4fca575b"
      "0f9a1b7a0f1d09544668297c1f04e5a5452ae1f4cf69f11b125f4cff1d54783d"
      default))
- '(package-selected-packages
-   '(company company-quickhelp diff-hl eglot eldoc-box flycheck
-             flycheck-eglot git-timemachine magit markdown-ts-mode
-             scala-ts-mode solarized-theme terraform-mode vertico))
+ '(package-selected-packages nil)
  '(treesit-font-lock-level 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
