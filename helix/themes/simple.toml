@@ -1,15 +1,15 @@
 inherits = "default"
 
-keyword = { fg = "black", modifiers = ["bold"] }
+keyword = { fg = "black" }
 comment = { fg = "gray", modifiers = ["italic"] }
-spell = { fg = "red", modifiers = ["bold"] }
+spell = { fg = "red" }
 
 type = { fg = "science_blue" }
-"type.definition" = { fg = "science_blue", modifiers = ["bold"] }
-"type.qualifier" = { fg = "black", modifiers = ["bold"] }
+"type.definition" = { fg = "science_blue" }
+"type.qualifier" = { fg = "black" }
 "type.builtin" = { fg = "science_blue", modifiers = ["italic"] }
 
-storageclass = { fg = "black", modifiers = ["bold"] }
+storageclass = { fg = "black" }
 string = "office_green"
 number = "patriarch"
 
@@ -28,11 +28,11 @@ function = "black"
 "method.call" = "vivid_orange"
 "generic_function" = "red"
 
-include = { fg = "black", modifiers = ["bold"] }
+include = { fg = "black" }
 
 constructor = "black"
 
-"keyword.import" = { fg = "black", modifiers = ["bold"] }
+"keyword.import" = { fg = "black" }
 
 namespace = "black"
 punctuation = "black"
@@ -47,18 +47,18 @@ variable = "black"
 "ui.background" = { bg = "white" }
 "ui.statusline" = { fg = "black", bg = "pale_blue" }
 "ui.statusline.inactive" = { fg = "black", bg = "gray" }
-"ui.linenr.selected" = { fg = "black", bg = "white", modifiers = ["bold"] }
+"ui.linenr.selected" = { fg = "black", bg = "white" }
 "ui.popup" = { fg = "black", bg = "gallery" }
 "ui.text" = { fg = "black" }
-"ui.text.focus" = { fg = "black", bg = "apricot", modifiers = ["bold"] }
+"ui.text.focus" = { fg = "black", bg = "apricot" }
 "ui.text.inactive" = "light-gray"
 "ui.text.directory" = { fg = "black" }
 "ui.virtual" = { fg = "black" }
 "ui.virtual.ruler" = { bg = "black" }
-"ui.virtual.jump-label" = { fg = "apricot", modifiers = ["bold"] }
-"ui.selection" = { bg = "pale_blue", fg = "white", modifiers = ["bold"] }
-"ui.selection.primary" = { bg = "pale_blue", modifiers = ["bold"] }
-"ui.menu.selected" = { fg = "white", bg = "pale_blue", modifiers = ["bold"] }
+"ui.virtual.jump-label" = { fg = "apricot" }
+"ui.selection" = { bg = "pale_blue", fg = "white" }
+"ui.selection.primary" = { bg = "pale_blue" }
+"ui.menu.selected" = { fg = "white", bg = "pale_blue" }
 "ui.cursorline.primary" = { fg = "black", bg = "cream" }
 "ui.gutter" = { fg = "black", bg = "white" }
 "ui.gutter.selected" = { fg = "black", bg = "white" }
@@ -71,7 +71,7 @@ warning = { fg = "yellow" }
 diagnostic.error = { fg = "red" }
 
 # Markdown
-"markup.heading" = { fg = "blue", modifiers = ["bold", "italic"] }
+"markup.heading" = { fg = "blue", modifiers = ["italic"] }
 "markup.link.text" = { fg = "gray" }
 "markup.raw" = { fg = "gray", modifiers = ["italic"] }
 

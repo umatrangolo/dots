@@ -9,7 +9,11 @@
      "2b0fcc7cc9be4c09ec5c75405260a85e41691abb1ee28d29fcd5521e4fca575b"
      "0f9a1b7a0f1d09544668297c1f04e5a5452ae1f4cf69f11b125f4cff1d54783d"
      default))
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(company-quickhelp diff-hl eglot eldoc-box flycheck-eglot
+                       git-timemachine magit markdown-ts-mode
+                       scala-ts-mode solarized-theme terraform-mode
+                       vertico))
  '(treesit-font-lock-level 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

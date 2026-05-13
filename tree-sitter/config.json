@@ -3,48 +3,57 @@
     "/Users/umatrangolo/Development"
   ],
   "theme": {
-    "comment": {
-      "color": "#808080",
-      "italic": true
-    },
-    "spell": {
-      "color": "red",
-      "bold": true
-    },
-    "keyword": {
-      "color": "black",
-      "bold": true
-    },
-    "type": {
-      "color": "#005fd7"
-    },
-    "type.definition": {
-      "color": "red",
-      "bold": true
-    },
-    "type.qualifier": {
-      "color": "black",
-      "bold": true
-    },
-    "storageclass": {
-      "color": "black",
-      "bold": true
-    },
-    "string": {
-      "color": "#008000"
-    },
-    "number": "#800080",
-    "constant": "#d75fd7",
-    "attribute": "blue",
-    "function.call": {
-      "color": "#ff5f00"
-    },
-    "method.call": {
-      "color": "#ff5f00"
-    },
-    "include": {
-      "color": "black",
-      "bold": true
-    }
+    "keyword":               "#0550ae",
+    "keyword.function":      "#0550ae",
+    "keyword.operator":      "#0550ae",
+    "keyword.exception":     "#0550ae",
+    "keyword.return":        "#0550ae",
+    "keyword.repeat":        "#0550ae",
+    "keyword.conditional":   "#0550ae",
+    "keyword.import":        "#0550ae",
+    "keyword.storage":       "#0550ae",
+    "variable.builtin":      "#0550ae",
+
+    "string":                "#116329",
+    "string.escape":         "#116329",
+    "string.special":        "#116329",
+    "string.regexp":         "#116329",
+    "character":             "#116329",
+
+    "number":                "#953800",
+    "number.float":          "#953800",
+    "boolean":               "#953800",
+    "constant.builtin":      "#953800",
+
+    "comment":               { "color": "#6e7781", "italic": true },
+
+    "type":                  "#1b7c83",
+    "type.builtin":          "#1b7c83",
+    "type.qualifier":        "#0550ae",
+
+    "function":              "#1f2328",
+    "function.builtin":      "#1f2328",
+    "function.call":         "#8250df",
+    "function.method":       "#1f2328",
+    "function.method.call":  "#8250df",
+    "constructor":           "#1f2328",
+
+    "variable":              "#1f2328",
+    "variable.member":       "#1f2328",
+    "variable.parameter":    "#1f2328",
+    "property":              "#1f2328",
+
+    "operator":              "#1f2328",
+    "punctuation":           "#1f2328",
+    "punctuation.bracket":   "#1f2328",
+    "punctuation.delimiter": "#1f2328",
+    "punctuation.special":   "#1f2328",
+
+    "constant":              "#1f2328",
+    "module":                "#1f2328",
+    "label":                 "#1f2328",
+    "tag":                   "#1f2328",
+    "tag.attribute":         "#1f2328",
+    "attribute":             "#1f2328"
   }
 }
