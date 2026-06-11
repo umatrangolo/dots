@@ -1,0 +1,82 @@
+inherits = "default"
+
+keyword = { fg = "ink", modifiers = ["bold"] }
+comment = { fg = "dust", modifiers = ["italic"] }
+spell = { fg = "ink" }
+
+type = { fg = "indigo" }
+"type.definition" = { fg = "indigo" }
+"type.qualifier" = { fg = "ink", modifiers = ["bold"] }
+"type.builtin" = { fg = "indigo", modifiers = ["italic"] }
+
+storageclass = { fg = "ink", modifiers = ["bold"] }
+string = "forest"
+number = "indigo"
+
+constant = "indigo"
+"constant.builtin" = "indigo"
+"constant.numeric" = "indigo"
+"constant.character.escape" = "forest"
+
+attribute = "ink"
+
+function = "ink"
+"function.macro" = "ink"
+"function.builtin" = { fg = "ink", modifiers = ["italic"] }
+"function.call" = "ink"
+"function.method" = "ink"
+"method.call" = "ink"
+
+include = { fg = "ink", modifiers = ["bold"] }
+constructor = "ink"
+"keyword.import" = { fg = "ink", modifiers = ["bold"] }
+
+namespace = "dust"
+punctuation = "dust"
+"punctuation.delimiter" = "dust"
+operator = "ink"
+
+variable = "ink"
+"variable.other.member" = "ink"
+"variable.parameter" = "ink"
+"variable.builtin" = "ink"
+
+"ui.background" = { bg = "bg" }
+"ui.statusline" = { fg = "bg", bg = "ink" }
+"ui.statusline.inactive" = { fg = "dust", bg = "bg_dark" }
+"ui.linenr" = { fg = "dust" }
+"ui.linenr.selected" = { fg = "ink", bg = "bg" }
+"ui.popup" = { fg = "ink", bg = "bg_dark" }
+"ui.text" = { fg = "ink" }
+"ui.text.focus" = { fg = "bg", bg = "ink" }
+"ui.text.inactive" = "dust"
+"ui.text.directory" = { fg = "indigo" }
+"ui.virtual" = { fg = "dust" }
+"ui.virtual.ruler" = { bg = "bg_dark" }
+"ui.virtual.jump-label" = { fg = "indigo", modifiers = ["bold"] }
+"ui.selection" = { bg = "bg_sel" }
+"ui.selection.primary" = { bg = "bg_sel" }
+"ui.menu.selected" = { fg = "bg", bg = "ink" }
+"ui.cursorline.primary" = { bg = "bg_line" }
+"ui.gutter" = { fg = "dust", bg = "bg" }
+"ui.gutter.selected" = { fg = "ink", bg = "bg" }
+"ui.menu" = { bg = "bg_dark", fg = "ink" }
+"ui.help" = { bg = "bg_dark", fg = "ink" }
+
+error = { fg = "ink", modifiers = ["bold", "underlined"] }
+warning = { fg = "ink", modifiers = ["underlined"] }
+diagnostic.error = { fg = "ink", modifiers = ["underlined"] }
+
+"markup.heading" = { fg = "ink", modifiers = ["bold"] }
+"markup.link.text" = { fg = "dust" }
+"markup.raw" = { fg = "forest", modifiers = ["italic"] }
+
+[palette]
+bg       = "#ffffff"
+bg_dark  = "#f2f2f2"
+bg_line  = "#f6f6f6"
+bg_sel   = "#dde4f4"
+dust     = "#aaaaaa"
+ink      = "#252525"
+indigo   = "#3d52a0"
+forest   = "#3a6830"

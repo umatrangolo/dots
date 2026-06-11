@@ -1,0 +1,82 @@
+inherits = "default"
+
+keyword = { fg = "amber_bright", modifiers = ["bold"] }
+comment = { fg = "amber_dim", modifiers = ["italic"] }
+spell = { fg = "amber_bright" }
+
+type = { fg = "amber_bright" }
+"type.definition" = { fg = "amber_bright" }
+"type.qualifier" = { fg = "amber_bright", modifiers = ["bold"] }
+"type.builtin" = { fg = "amber_bright", modifiers = ["italic"] }
+
+storageclass = { fg = "amber_bright", modifiers = ["bold"] }
+string = "amber_warm"
+number = "amber_bright"
+
+constant = "amber_bright"
+"constant.builtin" = "amber_bright"
+"constant.numeric" = "amber_bright"
+"constant.character.escape" = "amber_warm"
+
+attribute = "amber"
+
+function = "amber"
+"function.macro" = "amber"
+"function.builtin" = { fg = "amber", modifiers = ["italic"] }
+"function.call" = "amber"
+"function.method" = "amber"
+"method.call" = "amber"
+
+include = { fg = "amber_bright", modifiers = ["bold"] }
+constructor = "amber"
+"keyword.import" = { fg = "amber_bright", modifiers = ["bold"] }
+
+namespace = "amber_dim"
+punctuation = "amber_dim"
+"punctuation.delimiter" = "amber_dim"
+operator = "amber"
+
+variable = "amber"
+"variable.other.member" = "amber"
+"variable.parameter" = "amber"
+"variable.builtin" = "amber"
+
+"ui.background" = { bg = "bg" }
+"ui.statusline" = { fg = "bg", bg = "amber_bright" }
+"ui.statusline.inactive" = { fg = "amber_dim", bg = "bg_dark" }
+"ui.linenr" = { fg = "amber_dim" }
+"ui.linenr.selected" = { fg = "amber_bright", bg = "bg" }
+"ui.popup" = { fg = "amber", bg = "bg_dark" }
+"ui.text" = { fg = "amber" }
+"ui.text.focus" = { fg = "bg", bg = "amber_bright" }
+"ui.text.inactive" = "amber_dim"
+"ui.text.directory" = { fg = "amber_bright" }
+"ui.virtual" = { fg = "amber_dim" }
+"ui.virtual.ruler" = { bg = "bg_dark" }
+"ui.virtual.jump-label" = { fg = "amber_bright", modifiers = ["bold"] }
+"ui.selection" = { bg = "amber_sel" }
+"ui.selection.primary" = { bg = "amber_sel" }
+"ui.menu.selected" = { fg = "bg", bg = "amber_bright" }
+"ui.cursorline.primary" = { bg = "bg_line" }
+"ui.gutter" = { fg = "amber_dim", bg = "bg" }
+"ui.gutter.selected" = { fg = "amber", bg = "bg" }
+"ui.menu" = { bg = "bg_dark", fg = "amber" }
+"ui.help" = { bg = "bg_dark", fg = "amber" }
+
+error = { fg = "amber_bright", modifiers = ["bold", "underlined"] }
+warning = { fg = "amber", modifiers = ["underlined"] }
+diagnostic.error = { fg = "amber_bright", modifiers = ["underlined"] }
+
+"markup.heading" = { fg = "amber_bright", modifiers = ["bold"] }
+"markup.link.text" = { fg = "amber_dim" }
+"markup.raw" = { fg = "amber_warm", modifiers = ["italic"] }
+
+[palette]
+bg       = "#110a00"
+bg_dark  = "#0a0500"
+bg_line  = "#1e1000"
+amber_sel   = "#2e1800"
+amber_dim   = "#5c3a00"
+amber       = "#c4780c"
+amber_warm  = "#dda020"
+amber_bright = "#ffb000"

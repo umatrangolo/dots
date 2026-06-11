@@ -1,4 +1,4 @@
-theme = "simple"
+theme = "grove"
 
 [editor]
 trim-trailing-whitespace = true

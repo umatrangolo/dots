@@ -1,0 +1,82 @@
+inherits = "default"
+
+keyword = { fg = "ink", modifiers = ["bold"] }
+comment = { fg = "ink_faint", modifiers = ["italic"] }
+spell = { fg = "ink" }
+
+type = { fg = "slate" }
+"type.definition" = { fg = "slate" }
+"type.qualifier" = { fg = "ink", modifiers = ["bold"] }
+"type.builtin" = { fg = "slate", modifiers = ["italic"] }
+
+storageclass = { fg = "ink", modifiers = ["bold"] }
+string = "forest"
+number = "slate"
+
+constant = "slate"
+"constant.builtin" = "slate"
+"constant.numeric" = "slate"
+"constant.character.escape" = "forest"
+
+attribute = "ink"
+
+function = "ink"
+"function.macro" = "ink"
+"function.builtin" = { fg = "ink", modifiers = ["italic"] }
+"function.call" = "ink"
+"function.method" = "ink"
+"method.call" = "ink"
+
+include = { fg = "ink", modifiers = ["bold"] }
+constructor = "ink"
+"keyword.import" = { fg = "ink", modifiers = ["bold"] }
+
+namespace = "ink_faint"
+punctuation = "ink_faint"
+"punctuation.delimiter" = "ink_faint"
+operator = "ink"
+
+variable = "ink"
+"variable.other.member" = "ink"
+"variable.parameter" = "ink"
+"variable.builtin" = "ink"
+
+"ui.background" = { bg = "bg" }
+"ui.statusline" = { fg = "bg", bg = "ink" }
+"ui.statusline.inactive" = { fg = "ink_faint", bg = "bg_dark" }
+"ui.linenr" = { fg = "ink_faint" }
+"ui.linenr.selected" = { fg = "ink", bg = "bg" }
+"ui.popup" = { fg = "ink", bg = "bg_dark" }
+"ui.text" = { fg = "ink" }
+"ui.text.focus" = { fg = "bg", bg = "ink" }
+"ui.text.inactive" = "ink_faint"
+"ui.text.directory" = { fg = "slate" }
+"ui.virtual" = { fg = "ink_faint" }
+"ui.virtual.ruler" = { bg = "bg_dark" }
+"ui.virtual.jump-label" = { fg = "slate", modifiers = ["bold"] }
+"ui.selection" = { bg = "bg_sel" }
+"ui.selection.primary" = { bg = "bg_sel" }
+"ui.menu.selected" = { fg = "bg", bg = "ink" }
+"ui.cursorline.primary" = { bg = "bg_line" }
+"ui.gutter" = { fg = "ink_faint", bg = "bg" }
+"ui.gutter.selected" = { fg = "ink", bg = "bg" }
+"ui.menu" = { bg = "bg_dark", fg = "ink" }
+"ui.help" = { bg = "bg_dark", fg = "ink" }
+
+error = { fg = "ink", modifiers = ["bold", "underlined"] }
+warning = { fg = "ink", modifiers = ["underlined"] }
+diagnostic.error = { fg = "ink", modifiers = ["underlined"] }
+
+"markup.heading" = { fg = "ink", modifiers = ["bold"] }
+"markup.link.text" = { fg = "ink_faint" }
+"markup.raw" = { fg = "forest", modifiers = ["italic"] }
+
+[palette]
+bg       = "#ffffff"
+bg_dark  = "#f0f0f0"
+bg_line  = "#f5f5f5"
+bg_sel   = "#dde3ed"
+ink_faint = "#8c8070"
+ink       = "#1e1a14"
+forest    = "#1a5c1a"
+slate     = "#1a3060"
